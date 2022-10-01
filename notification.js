@@ -1,15 +1,20 @@
-
-function pushNotification(option) {
-
-    Notification.requestPermission().then(response => {
-        if (response==="granted") {
-            const notification = new Notification(option.title, {
-                body: option.message,
-                icon: option.icon,
-                tag: option.tag
-            });
-        } else if (response === "denied") {
-            alert("Notification Access is denied. Grant a persmission to get a notification"); 
-       }
-    });
+if ("Notification" in window) {
+    var pushNotification=function(option) {
+    if (Notification.permission === "granted") {
+        const notification = new Notification(option.title, {
+            body: option.message,
+            icon: option.icon,
+            tag: option.tag
+        });
+    } else if (Notification.permission === "denied") {
+            alert("Notification Access is denied. Grant a persmission to get a notification");    
+    } else {
+        Notification.requestPermission().then(response => {
+            pushNotification(option);         
+        });
+    }
 }
+} else {
+    alert("Can not notify");
+}
+
