@@ -1,15 +1,15 @@
 
 function pushNotification(option) {
-    let duration = 2000;
-    let title = "Notification";
-    let body = "Message is here";
 
     Notification.requestPermission().then(response => {
         if (response==="granted") {
-            const notification = new Notification(title, {
-                body: "This is a message body",
-                icon: "icon.png"
+            const notification = new Notification(option.title, {
+                body: option.message,
+                icon: option.icon,
+                tag: option.tag
             });
-       } 
+        } else if (response === "denied") {
+            alert("Notification Access is denied. Grant a persmission to get a notification"); 
+       }
     });
 }
