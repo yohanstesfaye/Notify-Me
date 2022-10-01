@@ -15,6 +15,6 @@ if ("Notification" in window) {
     }
 }
 } else {
-    alert("Can not notify");
+    alert("Your browser doesnot support push notification");
 }
 
