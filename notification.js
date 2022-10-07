@@ -17,6 +17,9 @@ var pushNotification = function (option) {
         image = option.silent;
     }
 
+    /**
+     * Notification option constraction
+     */
     notification_option = {
         body: option.message,
         icon: option.icon,
@@ -33,12 +36,12 @@ var pushNotification = function (option) {
 
         if (Notification.permission === "granted") {
             //Using service workers
-            // navigator.serviceWorker.ready.then(registration => {
-            //     registration.showNotification(option.title, notification_option);
-            // });
+            navigator.serviceWorker.ready.then(registration => {
+                registration.showNotification(option.title, notification_option);
+            });
             
             // Show Notification
-            const notification=new Notification(option.title, notification_option);  
+            // const notification=new Notification(option.title, notification_option);  
             
             // notification.addEventListener("show",e => {
             //     console.log(e); 
