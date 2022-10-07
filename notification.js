@@ -9,12 +9,6 @@ var pushNotification = function (option) {
     if (option.image !== null) {
         image = option.image;
     }
-    /**
-     * set silent from option if it passed
-     */
-    if (option.silent !== null) {
-        image = option.silent;
-    }
 
     /**
      * Chack browser support for Notification API
@@ -28,7 +22,6 @@ var pushNotification = function (option) {
                 icon: option.icon,
                 tag: option.tag,
                 renotify: true,
-                silent: silent,
                 image: image
             });  
             
