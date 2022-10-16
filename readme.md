@@ -1,5 +1,6 @@
 # Push Notification
 
+A simple javascript push notification library for a websites.
 # How to use
 to add a push notification to your website add
 
@@ -15,10 +16,13 @@ pushNotification({
 ```
 # Parameters
 
-| Parameter | Function | value | Default | Note|
+| Parameter | description | value | Default | Note|
 |----|------|----|----|------ |
 |__title__|add titlte to notification | _string_ | _null_|Important|
-|__tag__|notification identifier| _string_ | _null_|Important|
+|**tag**|linking morethan one notification together| _string_ | _null_|Important|
 |__message__|notification body| _string_ | _null_|Important|
 |__icon__|url address to icon/logo|_url_|_null_||
-|__image__|url address to image|_url_|_null_|may not supported by all devices/browsers|
+|**image**|url address to image|_url_|_null_|not supported by all browsers|
+|**silent**|intended to fire a silent notification|_boolean_|_false_|not supported by all browsers|
+|**renotify**|intended to fire a silent notification|_boolean_|_true_|not supported by all browsers|
+

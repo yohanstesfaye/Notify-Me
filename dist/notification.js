@@ -1,6 +1,7 @@
 var pushNotification = function (option) {
     let image = null;
     let silent = false;
+    let renotify = true;
 
     /**
      * Add Image if it is passed on call
@@ -13,7 +14,13 @@ var pushNotification = function (option) {
      */
     if (option.silent !== null) {
         silent = option.silent;
-    }                   
+    } 
+    /**
+     * set renotify from option if it passed
+     */
+    if (option.renotify !== null) {
+        renotify = option.renotify;
+    } 
 
     /**
      * Notification option constraction
@@ -22,9 +29,9 @@ var pushNotification = function (option) {
         body: option.message,
         icon: option.icon,
         tag: option.tag,
-        renotify: true,
+        renotify: renotify,
         silent: silent,
-        image: image
+        image: image,
     };
 
     /**
