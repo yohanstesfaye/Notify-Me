@@ -25,4 +25,3 @@ pushNotification({
 |**image**|url address to image|_url_|_null_|not supported by all browsers|
 |**silent**|intended to fire a silent notification|_boolean_|_false_|not supported by all browsers|
 |**renotify**|intended to fire a silent notification|_boolean_|_true_|not supported by all browsers|
-
