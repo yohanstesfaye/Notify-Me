@@ -4,6 +4,7 @@ var pushNotification = function (option) {
     let image = null;
     let silent = false;
 
+
     /**
      * Add Image if it is passed on call
      */
@@ -14,8 +15,8 @@ var pushNotification = function (option) {
      * set silent from option if it passed
      */
     if (option.silent !== null) {
-        image = option.silent;
-    }
+        silent = option.silent;
+    }                   
 
     /**
      * Notification option constraction
@@ -41,11 +42,11 @@ var pushNotification = function (option) {
             });
             
             // Show Notification
-            // const notification=new Notification(option.title, notification_option);  
+            const notification=new Notification(option.title, notification_option);  
             
-            // notification.addEventListener("show",e => {
-            //     console.log(e); 
-            // });
+            notification.addEventListener("show",e => {
+                console.log(e); 
+            });
         } else if (Notification.permission === "denied") {
              // Alert notification access denied
             alert("Notification Access is denied. Grant a persmission to get a notification");    
