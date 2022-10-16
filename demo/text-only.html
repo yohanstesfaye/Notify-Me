@@ -13,13 +13,24 @@
         <div class="title">Push notification</div>
         <h1>Text Only</h1>
         <div class="information">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit alias
-          eos consectetur quis, repellendus animi hic quasi maxime ratione atque
-          culpa optio debitis veritatis quibusdam, ex fugiat vel, earum aut
-          laborum? Aperiam!
+          This is a simple web push notification. the push notification only
+          contains the message to be notified.
         </div>
-        <button>Show Push Notification</button>
+        <button onclick="showNotification()">Show Push Notification</button>
       </div>
     </section>
+
+    <!-- SCRIPT-->
+    <script src="../dist/notification.js"></script>
+    <script>
+      let showNotification = function () {
+        let option = {
+          title: "Adey Coder",
+          message: "This is a simple push notification only the message is set",
+          tag: "message1",
+        };
+        pushNotification(option);
+      };
+    </script>
   </body>
 </html>

@@ -16,6 +16,10 @@ section {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+
 }
 
 .content {
@@ -57,4 +61,5 @@ button {
     color: white;
     width: 16rem;
     margin: auto;
+    cursor: pointer;
 }
