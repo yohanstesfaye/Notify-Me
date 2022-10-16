@@ -37,9 +37,9 @@ var pushNotification = function (option) {
 
         if (Notification.permission === "granted") {
             //Using service workers
-            navigator.serviceWorker.ready.then(registration => {
-                registration.showNotification(option.title, notification_option);
-            });
+            // navigator.serviceWorker.ready.then(registration => {
+            //     registration.showNotification(option.title, notification_option);
+            // });
             
             // Show Notification
             const notification=new Notification(option.title, notification_option);  
