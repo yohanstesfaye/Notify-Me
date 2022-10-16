@@ -16,7 +16,7 @@ pushNotification({
 # Parameters
 
 | Parameter | Function | value | Default | Note|
-|---|---|---|---|--- |
+|----|------|----|----|------ |
 |__title__|add titlte to notification | _string_ | _null_|Important|
 |__tag__|notification identifier| _string_ | _null_|Important|
 |__message__|notification body| _string_ | _null_|Important|
