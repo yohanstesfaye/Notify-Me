@@ -1,9 +1,6 @@
-// navigator.serviceWorker.register('sw.js');
-
 var pushNotification = function (option) {
     let image = null;
     let silent = false;
-
 
     /**
      * Add Image if it is passed on call
@@ -36,11 +33,6 @@ var pushNotification = function (option) {
     if ("Notification" in window) {
 
         if (Notification.permission === "granted") {
-            //Using service workers
-            // navigator.serviceWorker.ready.then(registration => {
-            //     registration.showNotification(option.title, notification_option);
-            // });
-            
             // Show Notification
             const notification=new Notification(option.title, notification_option);  
             
