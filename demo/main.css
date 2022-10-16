@@ -7,11 +7,8 @@
     font-family: sans-serif;
 }
 
-:root {
-    --primary: #019a89
-}
-
 section {
+    --primary: #f65c94;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +22,8 @@ section {
 .content {
     width: min(calc(100% - 2rem), 560px);
     padding: 2rem;
-    background-color: white;
+    background-color: #fff;
+    backdrop-filter: blur(2rem);
     border-radius: 1rem;
     text-align: center;
     display: flex;
@@ -37,6 +35,7 @@ section {
 
 .content .title {
     font-size: 0.9rem;
+    font-weight: 600;
     color: var(--primary);
 }
 
