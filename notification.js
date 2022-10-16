@@ -1,4 +1,4 @@
-navigator.serviceWorker.register('sw.js');
+// navigator.serviceWorker.register('sw.js');
 
 var pushNotification = function (option) {
     let image = null;
