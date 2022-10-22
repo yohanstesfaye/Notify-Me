@@ -6,7 +6,7 @@ A simple javascript push notification library for a websites.
 
 to add a push notification to your website add
 
-1. Add/lonk javascript file from **dist** folder to your website
+1. Add/link javascript file from **dist** folder to your website
 2. make a function call to on javascript
 
 
