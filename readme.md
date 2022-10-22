@@ -1,6 +1,6 @@
 # Push Notification
 
-A simple javascript push notification library for a websites.
+A simple javascript push notification library for a websites. It uses a javascript Notification API and supported on all browsers for desktop and mobile.
 
 ## How to use
 
