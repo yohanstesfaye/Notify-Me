@@ -17,10 +17,10 @@ pushNotification.requestPermission();
 ```
 
 ### Get Notification Permission
-get the status of website notification permission. return values are **default**, **granted** and **denied**
+
+get the status of website notification permission. return values are **default**, **granted** or **denied**
 
 ```js
-
 pushNotification.permission();
 ```
 
@@ -36,9 +36,17 @@ pushNotification.notify({
 });
 ```
 
-## Parameters
+## Methods
 
-| Parameter | description | value | Default | Note|
+| Method | Description |
+|--|-----|
+|**requestPermission()**|make a request for notification access permission |
+|**permission()**| return notification permission status|
+|**notify(_option_)**|show notification|
+
+## Properties
+
+|Properties | Description | Value | Default | Note|
 |----|------|----|----|------ |
 |__title__|add titlte to notification | _string_ | _null_|Important|
 |**tag**|linking morethan one notification together| _string_ | _null_|Important|
