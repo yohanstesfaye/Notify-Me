@@ -19,7 +19,9 @@
           tag: "message1",
           image: "ignore/image.jpg",
         };
-        pushNotification(option);
+
+        pushNotification.notify(option);
+        console.log(pushNotification.permission());
       };
     </script>
   </body>
