@@ -19,19 +19,13 @@ var pushNotificationObj = function () {
     //show notification
     this.notify = (option) => {
         // Add Image if it is passed on call
-        if (option.image !== null) {
-            this.image = option.image;
-        }
+        if (option.image !== null) this.image = option.image;
 
         // set silent from option if it passed
-        if (option.silent !== null) {
-            this.silent = option.silent;
-        } 
+        if (option.silent !== null)  this.silent = option.silent;
 
         // set renotify from option if it passed
-        if (option.renotify !== null) {
-            this.renotify = option.renotify;
-        } 
+        if (option.renotify !== null) this.renotify = option.renotify;
 
         // Notification option constraction
         notification_option = {
