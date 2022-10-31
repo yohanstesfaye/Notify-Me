@@ -1,10 +1,10 @@
-# Push Notification
+# Notify Me
 
 A simple javascript push notification library for a websites. It uses a javascript Notification API and supported on all browsers for desktop and mobile.
 
-## How to use
+## Get started
 
-to add a push notification to your website add
+to use a push notification feature you need to add a push notification to your website add
 
 1. Add/link javascript file from **dist** folder to your website
 2. make a function call to on javascript
