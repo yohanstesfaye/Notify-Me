@@ -11,7 +11,6 @@ to use a push notification feature you need to add a push notification to your w
 1. Add/link javascript file from **dist** folder to your website
 2. make a function call to on notification object using using **NotifyMe** object.
 
-
 ### Request Notification Permission
 
 to get show a push notification for a user need to grant a notification access on the browser. so to do that we need to use the following method to request a notification permission.
@@ -54,10 +53,10 @@ A properties that can be used on **Option** for **notify** method
 
 |Properties | Description | Value | Default | Note|
 |----|------|----|----|------ |
-|__title__|add titlte to notification | _string_ | _null_|Important|
+|**title**|add titlte to notification | _string_ | _null_|Important|
 |**tag**|linking morethan one notification together| _string_ | _null_|Important|
-|__message__|notification body| _string_ | _null_|Important|
-|__icon__|url address to icon/logo|_url_|_null_||
+|**message**|notification body| _string_ | _null_|Important|
+|**icon**|url address to icon/logo|_url_|_null_||
 |**image**|url address to image|_url_|_null_|[Not supported by all browsers](https://developer.mozilla.org/en-US/docs/Web/API/Notification/image#browser_compatibility)|
 |**silent**|intended to fire a silent notification|_boolean_|_false_|[Not supported by all browsers](https://developer.mozilla.org/en-US/docs/Web/API/Notification/silent#browser_compatibility)|
 |**renotify**|intended to fire a silent notification|_boolean_|_true_|[Not supported by all browsers](https://developer.mozilla.org/en-US/docs/Web/API/Notification/renotify#browser_compatibility)|
