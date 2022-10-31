@@ -52,6 +52,8 @@ NotifyMe.notify({
 
 ## Properties
 
+A properties that can be used on **Option** for **notify** method
+
 |Properties | Description | Value | Default | Note|
 |----|------|----|----|------ |
 |__title__|add titlte to notification | _string_ | _null_|Important|

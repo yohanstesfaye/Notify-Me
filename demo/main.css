@@ -9,6 +9,7 @@
 
 section {
     --primary: #14CBD8;
+    --accent: #FFFF00;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,10 +56,16 @@ button {
     background-color: var(--primary);
     padding: 1rem 2rem;
     font-size: 1rem;
-    border: none;
+    border: 1px solid var(--primary);
     border-radius: 0.25rem;
-    color: white;
+    color: var(--accent);
     width: 16rem;
     margin: auto;
     cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: var(--accent);
+    color: var(--primary);
 }
