@@ -9,9 +9,7 @@ A simple javascript push notification library for a websites. It uses a javascri
 to use a push notification feature you need to add a push notification to your website add
 
 1. Add/link javascript file from **dist** folder to your website
-2. make a function call to on javascript
-
-to use a push notification you access using **NotifyMe** object.
+2. make a function call to on notification object using using **NotifyMe** object.
 
 
 ### Request Notification Permission
