@@ -61,4 +61,4 @@ var pushNotificationObj = function () {
    }
 }
 
-var pushNotification = new pushNotificationObj();
+var NotifyMe = new pushNotificationObj();

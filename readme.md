@@ -1,5 +1,7 @@
 # Notify Me
 
+![Notify Me](./asset/Notify%20Me%20board.png)
+
 A simple javascript push notification library for a websites. It uses a javascript Notification API and supported on all browsers for desktop and mobile.
 
 ## Get started
@@ -9,21 +11,23 @@ to use a push notification feature you need to add a push notification to your w
 1. Add/link javascript file from **dist** folder to your website
 2. make a function call to on javascript
 
-to use a push notification you access using **pushNotification** object.
+to use a push notification you access using **NotifyMe** object.
 
 
 ### Request Notification Permission
 
+to get show a push notification for a user need to grant a notification access on the browser. so to do that we need to use the following method to request a notification permission.
+
 ```js
-pushNotification.requestPermission();
+NotifyMe.requestPermission();
 ```
 
 ### Get Notification Permission
 
-get the status of website notification permission. return values are **default**, **granted** or **denied**
+To check the status of status of website notification permission you can use the following method. It have a  return values **default**, **granted** or **denied**
 
 ```js
-pushNotification.permission();
+NotifyMe.permission();
 ```
 
 ### Show notification
@@ -31,7 +35,7 @@ pushNotification.permission();
 to make a push notification make a call to member function **notify** it will have an object argument **option** which have 3 important properties **title**, **tag**, **message** other more optional properties.
 
 ``` js
-pushNotification.notify({
+NotifyMe.notify({
     title: "Title",
     tag: "tag",
     message: "Notification body/message",
