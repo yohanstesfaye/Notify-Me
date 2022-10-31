@@ -13,13 +13,17 @@
     <link rel="stylesheet" href="./main.css" />
   </head>
   <body>
-    <section>
+    <section
+      style="
+        --bg-image: url('./asset/pexels-michelangelo-buonarroti-8728560.jpg');
+      "
+    >
       <div class="content">
         <div class="title">Push notification</div>
-        <h1>Text Only</h1>
+        <h1>Icon + Image</h1>
         <div class="information">
-          This is a simple web push notification. the push notification only
-          contains the message to be notified.
+          This notification contains icon,image and message to be notified the
+          user.
         </div>
         <button onclick="showNotification()">Show Push Notification</button>
       </div>
@@ -30,10 +34,10 @@
     <script>
       let showNotification = function () {
         let option = {
-          title: "Adey Coder",
+          title: "Notify Me Demo",
           message: "This is a simple push notification only the message is set",
           tag: "message1",
-          icon: "./asset/logo.png",
+          icon: "./asset/Notify-Me.png",
           image: "./asset/pexels-michelangelo-buonarroti-8728560.jpg",
         };
 
