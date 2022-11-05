@@ -6,14 +6,11 @@ var pushNotificationObj = function () {
     this.timeout = 0;
     this.notification = null;
 
-    this.requestPermission= () => {
+     this.requestPermission=async () => {
         if ("Notification" in window) {
-            if (Notification.permission !== "granted" || Notification.permission !== "denied") {
+            if (Notification.permission === "default") {
                 Notification.requestPermission().then(response => {
-                    if (response === "granted") {
-                        return true;
-                    } 
-                    return false;
+                    return response;
                 });
             }
         }
@@ -25,7 +22,7 @@ var pushNotificationObj = function () {
     }
 
     //show notification
-    this.notify = (option) => {
+    this.notify = async (option) => {
         // Add Image if it is passed on call
         if (option.image !== null) this.image = option.image;
 
@@ -58,16 +55,18 @@ var pushNotificationObj = function () {
             } else if (Notification.permission === "denied") {
                 // Alert notification access denied
                 // alert("Notification Access is denied. Grant a persmission to get a notification"); 
-                console.log("here");
                 this.showError();
             } else {
+                 await this.requestPermission().then(r => {
+                    if (r==="granted") {
+                        this.showNotification(option.title,option);
+                    } else if (r==="denied") {
+                        this.showError();
+                    }
+                });
                 // Request notification permission and show notification
-                if (this.requestPermission()) {
-                    this.showNotification(title,option);
-                } else {
-                    this.showError();
-                }
                 
+    
             }
 
         } else {
