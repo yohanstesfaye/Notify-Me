@@ -10,7 +10,7 @@
       href="./asset/Notify-Me.ico"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="../demo/main.css" />
   </head>
   <body>
     <section>
@@ -26,18 +26,23 @@
     </section>
 
     <!-- SCRIPT-->
-    <script src="../dist/notification.js"></script>
+    <script src="./notification.js"></script>
     <script>
       let showNotification = function () {
         let option = {
           title: "Notify Me Demo",
           message:
             "This is an example of push notification which contains icon and message.",
-          tag: "message1",
-          icon: "./asset/Notify-Me.png",
+          tag: "message7",
+          icon: "../demo/asset/Notify-Me.png",
+          onerror: err,
         };
 
         NotifyMe.notify(option);
+      };
+
+      let err = (e) => {
+        console.log("error detecetd");
       };
     </script>
   </body>
