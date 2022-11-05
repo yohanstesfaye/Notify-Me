@@ -9,7 +9,12 @@ var pushNotificationObj = function () {
     this.requestPermission= () => {
         if ("Notification" in window) {
             if (Notification.permission !== "granted" || Notification.permission !== "denied") {
-                Notification.requestPermission();
+                Notification.requestPermission().then(response => {
+                    if (response === "granted") {
+                        return true;
+                    } 
+                    return false;
+                });
             }
         }
     }
@@ -42,7 +47,7 @@ var pushNotificationObj = function () {
             icon: option.icon,
             tag: option.tag,
             // renotify: this.renotify,
-            silent: this.silent,
+            // silent: this.silent,
             image: this.image,
         };
 
@@ -50,32 +55,19 @@ var pushNotificationObj = function () {
         if ("Notification" in window) {
 
             if (Notification.permission === "granted") {
-                // Show Notification
-                // this.notification = new Notification(option.title, notification_option);
-                // console.log(this.notification);
-                // navigator.serviceWorker.ready.then(registration => {
-                //     registration.showNotification(option.title, notification_option);
-                // });
-                
-                if (this.timeout > 0) {
-                    setTimeout(() => { 
-                        this.notification.close();
-                    }, this.timeout);
-                }
-                //event listners
-                this.notification.onclose = this.error;
-                // this.notification.onclick = this.error;
-                this.notification.onshow = this.error;
+                showNotification(notification_option);
             } else if (Notification.permission === "denied") {
                 // Alert notification access denied
-                alert("Notification Access is denied. Grant a persmission to get a notification");    
+                // alert("Notification Access is denied. Grant a persmission to get a notification"); 
+                this.showError();
             } else {
                 // Request notification permission and show notification
-                Notification.requestPermission().then(response => {
-                    if (response == "granted") {
-                        this.notify(option); 
-                    }        
-                });
+                if (this.requestPermission()) {
+                    this.showNotification(notification_option);
+                } else {
+                    this.showError();
+                }
+                
             }
             // error handler
             // if (this.error !== null) {
@@ -84,10 +76,31 @@ var pushNotificationObj = function () {
 
         } else {
             alert("Your browser doesnot support push notification");
-        }
-
+        }    
+    },
+    //show Notification
+    this.showNotification = (notification_option) => {
+        // Show Notification
+        this.notification = new Notification(option.title, notification_option);
+        console.log(this.notification);
+        // navigator.serviceWorker.ready.then(registration => {
+        //     registration.showNotification(option.title, notification_option);
+        // });
         
-   }
+        if (this.timeout > 0) {
+            setTimeout(() => { 
+                this.notification.close();
+            }, this.timeout);
+        }
+        //event listners
+        this.notification.onclose = this.error;
+        // this.notification.onclick = this.error;
+        this.notification.onshow = this.error;
+        }    
+    
+    this.showError = () => {
+        alert("Notification Access is denied. Grant a persmission to get a notification"); 
+    };
 }
 
 var NotifyMe = new pushNotificationObj();
