@@ -53,35 +53,31 @@ var pushNotificationObj = function () {
 
         // Chack browser support for Notification API
         if ("Notification" in window) {
-
             if (Notification.permission === "granted") {
-                showNotification(notification_option);
+                this.showNotification(option.title,notification_option);
             } else if (Notification.permission === "denied") {
                 // Alert notification access denied
                 // alert("Notification Access is denied. Grant a persmission to get a notification"); 
+                console.log("here");
                 this.showError();
             } else {
                 // Request notification permission and show notification
                 if (this.requestPermission()) {
-                    this.showNotification(notification_option);
+                    this.showNotification(title,option);
                 } else {
                     this.showError();
                 }
                 
             }
-            // error handler
-            // if (this.error !== null) {
-            //     Notification.addEventListener("error", this.error);
-            // }
 
         } else {
             alert("Your browser doesnot support push notification");
         }    
     },
     //show Notification
-    this.showNotification = (notification_option) => {
+    this.showNotification = (title,option) => {
         // Show Notification
-        this.notification = new Notification(option.title, notification_option);
+        this.notification = new Notification(title, option);
         console.log(this.notification);
         // navigator.serviceWorker.ready.then(registration => {
         //     registration.showNotification(option.title, notification_option);
@@ -99,7 +95,7 @@ var pushNotificationObj = function () {
         }    
     
     this.showError = () => {
-        alert("Notification Access is denied. Grant a persmission to get a notification"); 
+        alert("Notification Access is denied. Grant a persmission to get a notification here"); 
     };
 }
 
