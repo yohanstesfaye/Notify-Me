@@ -2,6 +2,8 @@ var pushNotificationObj = function () {
     this.image = null;
     this.silent = false;
     this.renotify = true;
+    this.error = null;
+    this.timeout = 0;
 
     this.requestPermission= () => {
         if ("Notification" in window) {
@@ -27,6 +29,9 @@ var pushNotificationObj = function () {
         // set renotify from option if it passed
         if (option.renotify !== null) this.renotify = option.renotify;
 
+        // set renotify from option if it passed
+        if (option.error !== null) this.error = option.onerror;
+
         // Notification option constraction
         notification_option = {
             body: option.message,
@@ -42,7 +47,13 @@ var pushNotificationObj = function () {
 
             if (Notification.permission === "granted") {
                 // Show Notification
-                const notification=new Notification(option.title, notification_option);  
+                const notification = new Notification(option.title, notification_option);
+                
+                if (this.timeout > 0) {
+                    setTimeout(() => { 
+                        notification.close();
+                    }, this.timeout);
+                }
             } else if (Notification.permission === "denied") {
                 // Alert notification access denied
                 alert("Notification Access is denied. Grant a persmission to get a notification");    

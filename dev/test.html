@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Only</title>
+    <link
+      rel="shortcut icon"
+      href="./asset/Notify-Me.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <section>
+      <div class="content">
+        <div class="title">Push notification</div>
+        <h1>With Icon</h1>
+        <div class="information">
+          This is a web push notification. the push notification contains an
+          icon and the message to be notified for user.
+        </div>
+        <button onclick="showNotification()">Show Push Notification</button>
+      </div>
+    </section>
+
+    <!-- SCRIPT-->
+    <script src="../dist/notification.js"></script>
+    <script>
+      let showNotification = function () {
+        let option = {
+          title: "Notify Me Demo",
+          message:
+            "This is an example of push notification which contains icon and message.",
+          tag: "message1",
+          icon: "./asset/Notify-Me.png",
+        };
+
+        NotifyMe.notify(option);
+      };
+    </script>
+  </body>
+</html>
