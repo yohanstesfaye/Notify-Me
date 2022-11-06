@@ -22,7 +22,7 @@ var pushNotificationObj = function () {
     }
 
     //show notification
-    this.notify = async (option) => {
+    this.notify = (option) => {
         // Add Image if it is passed on call
         if (option.image !== null) this.image = option.image;
 
@@ -54,19 +54,18 @@ var pushNotificationObj = function () {
                 this.showNotification(option.title,notification_option);
             } else if (Notification.permission === "denied") {
                 // Alert notification access denied
-                // alert("Notification Access is denied. Grant a persmission to get a notification"); 
                 this.showError();
             } else {
-                 await this.requestPermission().then(r => {
-                    if (r==="granted") {
-                        this.showNotification(option.title,option);
-                    } else if (r==="denied") {
-                        this.showError();
-                    }
-                });
                 // Request notification permission and show notification
-                
-    
+                if (Notification.permission === "default") {
+                    Notification.requestPermission().then(response => {
+                        if (response === "granted") {
+                            this.showNotification(option.title, notification_option);
+                        } else {
+                            this.showError();
+                        }
+                    });
+                }
             }
 
         } else {
@@ -77,7 +76,6 @@ var pushNotificationObj = function () {
     this.showNotification = (title,option) => {
         // Show Notification
         this.notification = new Notification(title, option);
-        console.log(this.notification);
         // navigator.serviceWorker.ready.then(registration => {
         //     registration.showNotification(option.title, notification_option);
         // });
