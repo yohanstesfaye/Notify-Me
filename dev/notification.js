@@ -1,10 +1,14 @@
 var pushNotificationObj = function () {
-    this.image = null;
-    this.silent = false;
-    this.renotify = true;
-    this.error = null;
-    this.timeout = 0;
-    this.notification = null;
+    let image = null;
+    let silent = false;
+    let renotify = true;
+    let error = null;
+    let timeout = 0;
+    let notification = null;
+    let vibrate = false;
+    let showEvent = null;
+    let closeEvent = null;
+    let clickEvent = null;
 
      this.requestPermission=async () => {
         if ("Notification" in window) {
@@ -32,8 +36,14 @@ var pushNotificationObj = function () {
         // set renotify from option if it passed
         if (option.renotify !== null) this.renotify = option.renotify;
 
-        // set renotify from option if it passed
-        if (option.error !== null) this.error = option.onerror;
+        // add a function for on Show event
+        if (option.onShow !== null) this.showEvent = option.onShow;
+        
+        // add a function for on Close event
+        if (option.onClose !== null) this.closeEvent = option.onClose;
+        
+        // add a function for on Click event
+        if (option.onClick !== null) this.clickEvent = option.onClick;
 
         // set renotify from option if it passed
         if (option.timeout !== null) this.timeout = option.timeout;
@@ -43,8 +53,9 @@ var pushNotificationObj = function () {
             body: option.message,
             icon: option.icon,
             tag: option.tag,
-            // renotify: this.renotify,
-            // silent: this.silent,
+            renotify: this.renotify,
+            silent: this.silent,
+            vibrate: this.vibrate,
             image: this.image,
         };
 
@@ -86,9 +97,9 @@ var pushNotificationObj = function () {
             }, this.timeout);
         }
         //event listners
-        this.notification.onclose = this.error;
-        // this.notification.onclick = this.error;
-        this.notification.onshow = this.error;
+        this.notification.onClose = this.closeEvent;
+        this.notification.onClick = this.clickEvent;
+        this.notification.onShow = this.showEvent;
         }    
     
     this.showError = () => {
