@@ -1,3 +1,5 @@
+navigator.serviceWorker.register("sw.js");
+
 var pushNotificationObj = function () {
     let image = null;
     let silent = false;
@@ -86,21 +88,25 @@ var pushNotificationObj = function () {
     //show Notification
     this.showNotification = (title,option) => {
         // Show Notification
-        this.notification = new Notification(title, option);
-        // navigator.serviceWorker.ready.then(registration => {
-        //     registration.showNotification(option.title, notification_option);
-        // });
+        // this.notification = new Notification(title, option);
+        navigator.serviceWorker.ready.then(registration => {
+            registration.showNotification(option.title, notification_option);
+        });
         
-        if (this.timeout > 0) {
-            setTimeout(() => { 
-                this.notification.close();
-            }, this.timeout);
-        }
-        //event listners
-        this.notification.onClose = this.closeEvent;
-        this.notification.onClick = this.clickEvent;
-        this.notification.onShow = this.showEvent;
-        }    
+        // if (this.timeout > 0) {
+        //     setTimeout(() => { 
+        //         this.notification.close();
+        //     }, this.timeout);
+        // }
+        // //event listners
+        // this.notification.onClose = this.closeEvent;
+        // this.notification.onClick = this.clickEvent;
+        // this.notification.onShow = this.showEvent;
+        
+        self.addEventListener("notificationclick", (event) => {
+            console.log("Notification is clicked"); 
+        });
+    }    
     
     this.showError = () => {
         alert("Notification Access is denied. Grant a persmission to get a notification here"); 
