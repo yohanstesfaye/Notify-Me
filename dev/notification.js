@@ -1,5 +1,31 @@
-navigator.serviceWorker.register("sw.js");
+// navigator.serviceWorker.register("sw.js");
 
+//Service worker registration
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("./notify-me-service-worker.js")
+    .then((registration) => {
+      registration.addEventListener("updatefound", () => {
+        // If updatefound is fired, it means that there's
+        // a new service worker being installed.
+        const installingWorker = registration.installing;
+        console.log(
+          "A new service worker is being installed:",
+          installingWorker
+        );
+
+        // You can listen for changes to the installing service worker's
+        // state via installingWorker.onstatechange
+      });
+    })
+    .catch((error) => {
+      console.error(`Service worker registration failed: ${error}`);
+    });
+} else {
+  console.error("Service workers are not supported.");
+}
+
+//push notification object
 var pushNotificationObj = function () {
     let image = null;
     let silent = false;
@@ -103,9 +129,7 @@ var pushNotificationObj = function () {
         // this.notification.onClick = this.clickEvent;
         // this.notification.onShow = this.showEvent;
         
-        self.addEventListener("notificationclick", (event) => {
-            console.log("Notification is clicked"); 
-        });
+        
     }    
     
     this.showError = () => {
@@ -114,3 +138,5 @@ var pushNotificationObj = function () {
 }
 
 var NotifyMe = new pushNotificationObj();
+
+
